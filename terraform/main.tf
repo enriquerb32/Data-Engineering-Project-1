@@ -124,43 +124,6 @@ EOF
 
 }
 
-resource "aws_iam_role" "sde_ec2_iam_role" {
-  name = "sde_ec2_iam_role"
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "ec2.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
-
-resource "aws_iam_role" "sde_redshift_iam_role" {
-  name = "sde_redshift_iam_role"
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "redshift.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
-
-
 # EC2 budget constraint
 resource "aws_budgets_budget" "ec2" {
   name              = "budget-ec2-monthly"
